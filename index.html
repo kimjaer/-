@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>동적객체</title>
+  <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+    crossorigin="anonymous"></script>
+  <script src="./data/navi.js"></script>
+  <script>
+    $(document).ready(function () {
+      let gnbid = "";
+
+      for (x in naviAlldata.gnb) {
+        gnbid += `<li>
+                      <a href="${naviAlldata.gnb[x].href}">
+                                ${naviAlldata.gnb[x].nm}
+                                </a>
+                              </li>`;
+      }
+
+      let quicktags = "";
+
+      for (q in naviAlldata.quick) {
+        quicktags += `<li>
+                        <a href="${naviAlldata.quick[q].href}" 
+                          target="${naviAlldata.quick[q].target}">
+                                  ${naviAlldata.quick[q].nm}
+                            </a>
+                          </li>`;
+      }
+
+      $("#gnb").html(gnbid);
+      $("#quick").html(quicktags);
+
+
+      let btntag = "";
+
+      for (x in naviAlldata.btn) {
+        btntag += `<button>
+                        ${naviAlldata.btn[x].nm}
+                          </button>`;
+      }
+      $("#btn").html(btntag)
+
+      $("#btn").on('click','button',function(){
+        $('body').css('background', naviAlldata.btn[$(this).index()].back)
+      })
+
+    })
+  </script>
+</head>
+
+<body>
+  <div id="btn">
+
+  </div>
+  <ul id="gnb"></ul>
+  <ul id="quick"></ul>
+</body>
+
+</html>
