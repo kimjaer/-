@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2단 메뉴 제작하기</title>
+
+  <script>
+
+    const data = [
+      {
+        listnm: "랭콘소개",
+        href: "#none",
+        list: [
+          {
+            listnm: "랭콘메뉴1",
+            href: "http://www.naver.com",
+          },
+          {
+            listnm: "랭콘메뉴2",
+            href: "http://www.naver.com",
+          },
+          {
+            listnm: "랭콘메뉴3",
+            href: "http://www.naver.com",
+          },
+        ]
+      },
+      {
+        listnm: "프로그램",
+        href: "#none",
+        list: [
+          {
+            listnm: "프로그램메뉴1",
+            href: "http://www.naver.com",
+          },
+          {
+            listnm: "프로그램메뉴2",
+            href: "http://www.naver.com",
+          },
+          {
+            listnm: "프로그램메뉴3",
+            href: "http://www.naver.com",
+          },
+          {
+            listnm: "프로그램메뉴4",
+            href: "http://www.naver.com",
+          },
+        ]
+      },
+      {
+        listnm: "입학안내",
+        href: "#none",
+        list: [
+          {
+            listnm: "입학안내 메뉴1",
+            href: "http://www.naver.com",
+          },
+          {
+            listnm: "입학안내 메뉴2",
+            href: "http://www.naver.com",
+          },
+          {
+            listnm: "입학안내 메뉴3",
+            href: "http://www.naver.com",
+          },
+        ]
+      },
+    ]
+
+  </script>
+  <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+    crossorigin="anonymous"></script>
+  <script>
+
+
+
+    $(function () {
+      let litag = "";
+      for (x in data) {
+
+
+        litag += `<li><a href="${data[x].href}">${data[x].listnm}</a>`
+        litag += `<ul>`
+        for (j in data[x].list) {
+
+          litag += `<li><a href="${data[x].list[j].href}">${data[x].list[j].listnm}</a></li>`
+        }
+        litag += `</ul>`
+        litag += `</li>`
+
+        $("#gnb").html(litag)
+
+        let strongs = "";
+        for (x in data[x].list) {
+          strongs += `<strong> ${data[x].listnm} </strong>`
+
+        }
+        $("#tab").html(strongs);
+      }
+
+      let tabcontent = "";
+      tabcontent += `<p>${data[0].list[0].listnm}</p>`
+      $(".tabcontent").html(tabcontent);
+
+
+    })
+  </script>
+</head>
+
+<body>
+  <ul id="gnb">
+
+  </ul>
+
+  <div id="tab">
+
+  </div>
+
+  <div class="tabcontent">
+
+  </div>
+</body>
+
+</html>
